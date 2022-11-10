@@ -2,65 +2,69 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import converter from "bech32-converting";
-
-let address = ""
-let prefix = ""
+import { KeyboardEvent } from 'react';
 
 
-const HEX_REGEX = /[0-9A-Fa-f]{6}/g;
-
-function updateBoxes() {
-    let output = ""
-    let hex = address.match(HEX_REGEX)
-    if (hex) {
-        if (prefix.trim().length == 0) {
-            output = ""
-        } else {
-            try {
-                output = converter(prefix).toBech32(address)
-            } catch (error) {
-                output = "nil"
-            }
-        }
-    } else {
-        let io = address.indexOf('1')
-        let pref = address.substring(0, io)
-        let ha = ""
-        try {
-            ha = converter(pref).toHex(address)
-        } catch (error) {
-            output = "nil"
-        }
-        if (prefix.trim().length == 0) {
-            output = ha
-        } else {
-            try {
-                output = converter(prefix).toBech32(ha)
-            } catch (error) {
-                output = "nil"
-            }
-        }
-    }
-
-    let out = document.getElementById("output_address") as HTMLInputElement
-
-    out.value = output
-
-}
-
-function checkAddress(e: KeyboardEvent) {
-    let target: HTMLInputElement = e.target as HTMLInputElement
-    address = target.value
-    updateBoxes()
-}
-
-function checkPrefix(e: KeyboardEvent) {
-    let target: HTMLInputElement = e.target as HTMLInputElement
-    prefix = target.value
-    updateBoxes()
-}
 
 export default function AddressConv() {
+    let address = ""
+    let prefix = ""
+
+
+    const HEX_REGEX = /[0-9A-Fa-f]{6}/g;
+
+    const updateBoxes = function () {
+        let output = ""
+        let hex = address.match(HEX_REGEX)
+        if (hex) {
+            if (prefix.trim().length == 0) {
+                output = ""
+            } else {
+                try {
+                    output = converter(prefix).toBech32(address)
+                } catch (error) {
+                    output = "nil"
+                }
+            }
+        } else {
+            let io = address.indexOf('1')
+            let pref = address.substring(0, io)
+            let ha = ""
+            try {
+                ha = converter(pref).toHex(address)
+            } catch (error) {
+                output = "nil"
+            }
+            if (prefix.trim().length == 0) {
+                output = ha
+            } else {
+                try {
+                    output = converter(prefix).toBech32(ha)
+                } catch (error) {
+                    output = "nil"
+                }
+            }
+        }
+
+        let out = document.getElementById("output_address") as HTMLInputElement
+
+        out.value = output
+
+    }
+
+    const checkAddress = function (event: KeyboardEvent<HTMLInputElement>) {
+        let target: HTMLInputElement = event.target as HTMLInputElement
+        address = target.value
+        updateBoxes()
+    }
+
+    const checkPrefix = function (event: KeyboardEvent<HTMLInputElement>) {
+        let target: HTMLInputElement = event.target as HTMLInputElement
+        prefix = target.value
+        updateBoxes()
+    }
+
+
     return (
         <div className={styles.container}>
             <Head>
