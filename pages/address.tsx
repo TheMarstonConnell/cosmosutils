@@ -88,7 +88,6 @@ export default function AddressConv() {
                     Input an address, it can be Hex like ethereum, or bech32 like bitcoin/cosmos. If the address is hex, it will be converted to bech32 according to the prefix. If the input is bech32, it will be converted to hex (if no prefix is specified), or to a different bech32 prefix.
                 </p>
             </main>
-
             <footer className={styles.footer}>
                 Jackal Labs 2022
             </footer>
