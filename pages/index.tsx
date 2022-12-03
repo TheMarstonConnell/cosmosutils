@@ -22,6 +22,10 @@ export default function Home() {
             <h2>Address Converter</h2>
             <p>Convert between bech32/hex addresses.</p>
           </Link>
+          <Link href="/gov" className={styles.card}>
+            <h2>Governance Post</h2>
+            <p>A markdown editor for creating governance posts.</p>
+          </Link>
         </div>
       </main>
 

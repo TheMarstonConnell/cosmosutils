@@ -29,3 +29,19 @@ a {
     background: black;
   }
 }
+
+.markdown>h1 {
+  font-size: xx-large;
+}
+
+.markdown>h2 {
+  font-size: x-large;
+}
+
+.markdown>h3 {
+  font-size: larger;
+}
+
+.markdown>h4 {
+  font-size: large;
+}

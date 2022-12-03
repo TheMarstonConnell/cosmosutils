@@ -1,0 +1,65 @@
+import Head from 'next/head'
+import Image from 'next/image'
+import styles from '../styles/Home.module.css'
+import converter from "bech32-converting";
+import { KeyboardEvent } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+
+
+
+export default function AddressConv() {
+    const [value, setValue] = useState(`# Markdown
+## Markdown
+### Markdown
+#### Markdown
+Markdown`);
+
+    const updateVal = function (event: ChangeEvent<HTMLTextAreaElement>) {
+        if (value == undefined) {
+            return
+        }
+        setValue(event.target.value)
+    }
+
+    const editorLayout = 'w-1/2 flex space-x-4 mt-8 border-solid border border-indigo-600 p-2 '
+
+    return (
+        <div className={styles.container}>
+            <Head>
+                <title>Address Converter</title>
+                <meta name="description" content="Converting addresses between networks." />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+
+            <main className={styles.main}>
+                <h1 className={styles.title}>
+                    Governance Editor - WIP
+                </h1>
+
+
+                <div className='w-full flex flex-1 flex-wrap h-full mt-10'>
+                    <div className='w-full flex flex-1 flex-row space-x-4 mt-8'>
+                        <div className={editorLayout}>
+                            <textarea className="resize-none focus-visible:outline-none" id="mdinput" name="mdinput" rows={4} cols={100} onChange={updateVal} value={value}></textarea>
+                        </div>
+                        <div className={editorLayout}>
+                            <div className='w-full overflow-y-auto markdown'>
+                                <ReactMarkdown children={value} remarkPlugins={[remarkGfm]} ></ReactMarkdown>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </main>
+            <footer className={styles.footer}>
+                Jackal Labs 2022
+            </footer>
+        </div>
+    )
+}
