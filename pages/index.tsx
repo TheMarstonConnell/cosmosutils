@@ -26,6 +26,10 @@ export default function Home() {
             <h2>Governance Post</h2>
             <p>A markdown editor for creating governance posts.</p>
           </Link>
+          <Link href="/terraibc" className={styles.card}>
+            <h2>Terra Keplr</h2>
+            <p>Adding Terra 2 to Keplr for IBC transfers.</p>
+          </Link>
         </div>
       </main>
 
