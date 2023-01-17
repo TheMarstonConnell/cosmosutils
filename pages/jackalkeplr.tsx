@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 declare global {
@@ -21,15 +20,15 @@ declare global {
 export default function TerraIBC() {
     const chainId = "jackal-1"
     
-    function addTerra(){
-        let prefix = "terra"
+    function addJackal(){
+        let prefix = "jkl"
         window.keplr.experimentalSuggestChain({
-            chainId: "phoenix-1",
-            chainName: "Terra2",
-            rpc: "https://terra-rpc.polkachu.com/",
-            rest: "https://terra-api.polkachu.com/",
+            chainId: chainId,
+            chainName: "Jackal",
+            rpc: "https://rpc.jackalprotocol.com",
+            rest: "https://api.jackalprotocol.com",
             bip44: {
-                coinType: 330,
+                coinType: 118,
             },
             bech32Config: {
                 bech32PrefixAccAddr: prefix,
@@ -41,18 +40,18 @@ export default function TerraIBC() {
             },
             currencies: [ 
                 { 
-                    coinDenom: "LUNA", 
-                    coinMinimalDenom: "uluna", 
+                    coinDenom: "JKL", 
+                    coinMinimalDenom: "ujkl", 
                     coinDecimals: 6, 
-                    coinGeckoId: "terra", 
+                    coinGeckoId: "jackal-protocol", 
                 }, 
             ],
             feeCurrencies: [
                 {
-                    coinDenom: "LUNA", 
-                    coinMinimalDenom: "uluna", 
+                    coinDenom: "JKL", 
+                    coinMinimalDenom: "ujkl", 
                     coinDecimals: 6, 
-                    coinGeckoId: "terra", 
+                    coinGeckoId: "jackal-protocol", 
                     gasPriceStep: {
                         low: 0.01,
                         average: 0.025,
@@ -61,10 +60,10 @@ export default function TerraIBC() {
                 },
             ],
             stakeCurrency: {
-                coinDenom: "LUNA", 
-                    coinMinimalDenom: "uluna", 
+                coinDenom: "JKL", 
+                    coinMinimalDenom: "ujkl", 
                     coinDecimals: 6, 
-                    coinGeckoId: "terra", 
+                    coinGeckoId: "jackal-protocol", 
             },
         });
     }
@@ -74,18 +73,18 @@ export default function TerraIBC() {
         
             <div className={styles.container}>
                 <Head>
-                    <title>Address Converter</title>
-                    <meta name="description" content="Adding Terra 2 to Keplr to test IBC" />
+                    <title>Jackal to Keplr</title>
+                    <meta name="description" content="Adding Jackal to Keplr" />
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
 
                 <main className={styles.main}>
                     <h1 className={styles.title}>
-                        Terra on Keplr
+                        Jackal on Keplr
                     </h1>
 
                     {/* <button onClick={connectKeplrWallet}>IBC Send</button> */}
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={addTerra}>Add Terra</button>
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={addJackal}>Add to Keplr</button>
 
                    
                 </main>
