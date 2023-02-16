@@ -34,6 +34,10 @@ export default function Home() {
             <h2>Terra Keplr</h2>
             <p>Adding Terra 2 to Keplr for IBC transfers.</p>
           </Link>
+          <Link href="/sign_arb" className={styles.card}>
+            <h2>Sign Data</h2>
+            <p>Sign data with your Jackal address.</p>
+          </Link>
         </div>
       </main>
 
