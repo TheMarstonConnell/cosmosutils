@@ -24,10 +24,15 @@ export default function TerraIBC() {
     async function sign(){
         let data_in = document.getElementById("data_input")
         let data_out = document.getElementById("data_output")
+        let key_out = document.getElementById("key_output")
+
         if (data_out == null) {
             return
         }
         if (data_in == null) {
+            return
+        }
+        if (key_out == null) {
             return
         }
 
@@ -40,10 +45,14 @@ export default function TerraIBC() {
         let key =  await window.keplr.getKey(chainId)
         let data = await window.keplr.signArbitrary(chainId, key.bech32Address, toSign)
         
-        
+        console.log(data)
 
         let out = data_out as HTMLTextAreaElement
         out.value = data.signature
+
+        let kout = key_out as HTMLTextAreaElement
+
+        kout.value = data.pub_key.value
 
         
     }
@@ -66,6 +75,7 @@ export default function TerraIBC() {
                     <textarea className='my-4 border-solid border-2 border-blue-400 rounded' id="data_input" name="data_input" rows={4} cols={50}></textarea>
                     {/* <button onClick={connectKeplrWallet}>IBC Send</button> */}
                     <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={sign}>Sign Data</button>
+                    <textarea className='my-4 border-solid border-2 border-blue-400 rounded' id="key_output" name="key_output" rows={4} cols={50} readOnly={true}></textarea>
                     <textarea className='my-4 border-solid border-2 border-blue-400 rounded' id="data_output" name="data_output" rows={4} cols={50} readOnly={true}></textarea>
 
                    
